@@ -16,7 +16,7 @@ class Point {
     constructor(x, y, char) {
         this.x = x;
         this.y = y;
-        this.char = char;
+        this.sym = char;
     }
 
     draw() {
@@ -51,16 +51,10 @@ function main() {
 
     initField();
     
-    let p1 = new Point();
-    p1.x = 7;
-    p1.y = 3;
-    p1.sym = 'U';
+    let p1 = new Point(7, 3, 'U');
     p1.draw();
 
-    let p2 = new Point();
-    p2.x = 15;
-    p2.y = 13;
-    p2.sym = 'X';
+    let p2 = new Point(15, 15, 'X');
     p2.draw();
     
 
