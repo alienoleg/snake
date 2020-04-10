@@ -7,6 +7,24 @@ const FIELD_CELLS = 60;
 const FIELD_CHAR_INIT = ' ';
 const FIELD_CHAR_SNAKE = 'Q';
 
+class Point {
+
+    x = null;
+    y = null;
+    sym = '';
+
+    constructor(x, y, char) {
+        this.x = x;
+        this.y = y;
+        this.char = char;
+    }
+
+    draw() {
+        setChar(this.x, this.y, this.sym);        
+    }
+
+}
+
 let field = '';
 let gameField = null;
 
@@ -32,8 +50,19 @@ function setChar(x, y, char) {
 function main() {
 
     initField();
+    
+    let p1 = new Point();
+    p1.x = 7;
+    p1.y = 3;
+    p1.sym = 'U';
+    p1.draw();
 
-    setChar(10, 16, FIELD_CHAR_SNAKE);
+    let p2 = new Point();
+    p2.x = 15;
+    p2.y = 13;
+    p2.sym = 'X';
+    p2.draw();
+    
 
     console.log('Hello world');
 }
