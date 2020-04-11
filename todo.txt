@@ -5,3 +5,4 @@
 4) field size 80x25
 5) field border
 6) class Figure
+7) move classes to a separate file
