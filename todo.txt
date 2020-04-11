@@ -1,0 +1,7 @@
+1) setChar from [0,0]
+1.1) array of Point
+2) create HorizontalLine
+3) create VerticalLine
+4) field size 80x25
+5) field border
+6) class Figure
