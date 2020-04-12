@@ -121,6 +121,23 @@ class Snake extends Figure {
     return newPoint;
   }
 
+  keyHandler(key) {
+    switch(key) {
+      case 'w':
+        this.direction = UP;
+        break;
+      case 's':
+        this.direction = DOWN;
+        break;
+      case 'a':
+        this.direction = LEFT;
+        break;
+      case 'd':
+        this.direction = RIGHT;
+        break;
+    }
+  }
+
 }
 
 /**
@@ -172,9 +189,17 @@ function main() {
   let snake = new Snake(p1, 4, DOWN);
   snake.draw();
   
-  console.log(snake);
+  document.addEventListener('keypress', function(event) {
+    snake.keyHandler(event.key);
+  });
 
-  snake.move();
+  let gameTimer = setInterval( () => snake.move(), 200);
+  document.getElementById('stop').onclick = function() {
+    console.log('stop');
+    clearInterval(gameTimer);
+  }
+
+  console.log(snake);
 
   console.log('Hello world');
 }

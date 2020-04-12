@@ -5,3 +5,8 @@
 + 4) field size 80x25
 +5) field border
 +6) class Figure
+
++7) settimeinterval
+8) key handle
+9) class FoodCreator
+10) method isHit
