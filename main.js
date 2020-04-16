@@ -6,8 +6,9 @@ const FIELD_ROWS = 25;
 const FIELD_CELLS = 80;
 
 const FIELD_CHAR_INIT = ' ';
-const FIELD_CHAR_SNAKE = 'Q';
+const FIELD_CHAR_SNAKE = '*';
 const FIELD_CHAR_LINE = '#';
+const FIELD_CHAR_FOOD = '@';
 
 const LEFT = 1;
 const RIGHT = 2;
@@ -140,6 +141,28 @@ class Snake extends Figure {
 
 }
 
+class FoodCreator {
+
+  mapWidth;
+  mapHeight;
+  sym;
+
+  constructor(mapWidth, mapHeight, sym) {
+    this.mapWidth = mapWidth;
+    this.mapHeight = mapHeight;
+    this.sym = sym;    
+  }
+
+  createFood() {
+    let x = Math.trunc( Math.random() * (this.mapWidth - 2) + 1 );
+    let y = Math.trunc( Math.random() * (this.mapHeight - 2) + 1 );
+    console.log('x: ', x, ' y: ', y);
+    let food = new Point(x, y, this.sym);
+    return food;
+  }
+
+}
+
 /**
  * End of classes
  */
@@ -188,20 +211,25 @@ function main() {
   let p1 = new Point(10, 10, FIELD_CHAR_SNAKE);
   let snake = new Snake(p1, 4, DOWN);
   snake.draw();
+
+  let foodCreator = new FoodCreator(FIELD_CELLS, FIELD_ROWS, FIELD_CHAR_FOOD);
+  let food = foodCreator.createFood();
+  food.draw();
   
   document.addEventListener('keypress', function(event) {
     snake.keyHandler(event.key);
   });
 
-  let gameTimer = setInterval( () => snake.move(), 200);
+  let gameTimer = null;
+  
+  document.getElementById('start').onclick = function() {
+    gameTimer = setInterval( () => snake.move(), 200);
+  }
+
   document.getElementById('stop').onclick = function() {
     console.log('stop');
     clearInterval(gameTimer);
   }
-
-  console.log(snake);
-
-  console.log('Hello world');
 }
 
 document.addEventListener('DOMContentLoaded', main);
