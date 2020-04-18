@@ -1,5 +1,5 @@
-const FIELD_ROWS = 25;
-const FIELD_CELLS = 80;
+const FIELD_ROWS = 40;
+const FIELD_CELLS = 60;
 
 const FIELD_CHAR_INIT = ' ';
 const FIELD_CHAR_SNAKE = '*';

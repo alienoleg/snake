@@ -11,11 +11,11 @@ class Point {
   }
 
   draw() {
-    setChar(this.x, this.y, this.sym);        
+    field.setPoint(this.x, this.y, this.sym);        
   }
 
   clear() {
-    setChar(this.x, this.y, ' ');
+    field.clearPoint(this.x, this.y, ' ');
   }
 
   move(offset, direction) {
@@ -33,6 +33,13 @@ class Point {
         this.y += offset;
         break;      
     }
+  }
+
+  static isEqual(point1, point2) {
+    if (point1.x == point2.x && point1.y == point2.y) {
+      return true;
+    }
+    return false;
   }
 
 }

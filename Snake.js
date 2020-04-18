@@ -28,6 +28,17 @@ class Snake extends Figure {
     return newPoint;
   }
 
+  eat(food) {
+    let head = this._getNewPoint();
+    if (Point.isEqual(head, food)) {
+      food.sym = head.sym;
+      this.points.push(head);
+      head.draw();
+      return true;
+    }
+    return false;
+  }
+
   keyHandler(key) {
     switch(key) {
       case 'w':

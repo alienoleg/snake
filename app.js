@@ -1,8 +1,10 @@
 'use strict'
 
+let field = null;
+
 function main() {
 
-  initField();
+  field = new Console(gameFieldDiv, FIELD_CELLS, FIELD_ROWS, 15);
 
   // draw border
   let upBorder = new HorizontalLine(0, FIELD_CELLS - 1, 0, FIELD_CHAR_LINE);
@@ -29,7 +31,16 @@ function main() {
   let gameTimer = null;
   
   document.getElementById('start').onclick = function() {
-    gameTimer = setInterval( () => snake.move(), 200);
+    gameTimer = setInterval( function() {
+
+      if (snake.eat(food)) {
+        food = foodCreator.createFood();
+        food.draw();
+      } else {
+        snake.move();
+      } 
+
+    }, 150);
   }
 
   document.getElementById('stop').onclick = function() {
